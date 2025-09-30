@@ -1,0 +1,339 @@
+<!--
+  Portfólio em um arquivo HTML para editores e designers gráficos
+  - Usa TailwindCSS via CDN
+  - Imagens de exemplo usam Unsplash (substitua pelas suas imagens)
+  - Possui: Hero, Sobre, Serviços, Portfólio com filtros, Depoimentos, Contato, Rodapé
+  - Salve como: portfolio-editor-design.html
+-->
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfólio — Editor & Design Gráfico</title>
+  <meta name="description" content="Portfólio de edição de vídeo e design gráfico — mostra de trabalhos, serviços e contato." />
+  <!-- Tailwind CDN (para produção é recomendado gerar build) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Pequenas customizações */
+    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(6px); }
+    .accent { color: #10B981; } /* verde-accent */
+  </style>
+</head>
+<body class="bg-[#0b1020] text-slate-100 antialiased">
+
+  <!-- NAV -->
+  <header class="fixed w-full z-30">
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#home" class="text-xl font-bold tracking-wide">ADUDDesign<span class="accent">.</span></a>
+      <ul class="hidden md:flex gap-6 items-center text-sm">
+        <li><a href="#about" class="hover:underline">Sobre</a></li>
+        <li><a href="#services" class="hover:underline">Serviços</a></li>
+        <li><a href="#portfolio" class="hover:underline">Portfólio</a></li>
+        <li><a href="#contact" class="hover:underline">Contato</a></li>
+        <li><a class="px-4 py-2 bg-white text-black rounded-md" href="#contact">Contratar</a></li>
+      </ul>
+      <button id="menuBtn" class="md:hidden p-2 rounded-md glass">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="hidden bg-[#061026] glass px-6 py-4 md:hidden">
+      <a href="#about" class="block py-2">Sobre</a>
+      <a href="#services" class="block py-2">Serviços</a>
+      <a href="#portfolio" class="block py-2">Portfólio</a>
+      <a href="#contact" class="block py-2">Contato</a>
+    </div>
+  </header>
+
+  <main class="pt-28">
+    <!-- HERO -->
+    <section id="home" class="max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12">
+      <div class="flex-1">
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Eu crio <span class="accent">identidades visuais</span> e edições que comunicam.</h1>
+        <p class="mt-4 text-slate-300">Editor de vídeo | Designer gráfico — logos, thumbnails, vídeo promocional, corte para redes sociais e motion simples.</p>
+        <div class="mt-6 flex gap-4">
+          <a href="#portfolio" class="px-6 py-3 bg-white text-black rounded-md font-semibold">Ver trabalhos</a>
+          <a href="#contact" class="px-6 py-3 border border-slate-600 rounded-md">Fale comigo</a>
+        </div>
+
+        <ul class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs text-slate-400">
+          <li>💼 1+ anos de experiência</li>
+          <li>🎬 Edição para YouTube e Reels</li>
+          <li>🎨 Identidade visual completa</li>
+        </ul>
+      </div>
+
+      <div class="flex-1">
+  <div class="w-full rounded-2xl overflow-hidden shadow-2xl">
+    <img src="https://i.pinimg.com/1200x/51/29/32/5129325dd533588d57d5ee3baed2b286.jpg" 
+         alt="trabalho de design" 
+         class="w-full object-cover h-72 md:h-96"/>
+  </div>
+</div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-6xl mx-auto px-6 py-12">
+      <div class="grid md:grid-cols-3 gap-8 items-center">
+        <div class="md:col-span-2">
+          <h2 class="text-2xl font-bold">Sobre mim</h2>
+          <p class="mt-4 text-slate-300">Sou editor e designer gráfico focado em contar histórias através de imagem e ritmo. Trabalho desde a concepção da identidade até a entrega final em formatos otimizados para redes sociais, YouTube e material impresso.</p>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-4">
+            <div class="p-4 glass rounded-lg">
+              <h3 class="font-semibold">Ferramentas</h3>
+              <p class="text-sm text-slate-300 mt-2">Adobe Premiere, After Effects, Photoshop, Illustrator, Figma</p>
+            </div>
+            <div class="p-4 glass rounded-lg">
+              <h3 class="font-semibold">Estilos</h3>
+              <p class="text-sm text-slate-300 mt-2">Minimal, moderno, retrô, visual cinematográfico</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 bg-gradient-to-br from-[#071021] to-[#0b1630] rounded-2xl glass">
+          <h3 class="font-semibold">Serviço rápido</h3>
+          <p class="text-slate-300 text-sm mt-3">Edição rápida para uploads, correções de cor e ajustes finais em 24-48h (dependendo do projeto).</p>
+          <ul class="mt-4 text-sm text-slate-400">
+            <li>• Revisões inclusas</li>
+            <li>• Entregas em MP4, MOV, PNG, PDF</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="max-w-6xl mx-auto px-6 py-12">
+      <h2 class="text-2xl font-bold">Serviços</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <article class="p-6 glass rounded-xl">
+          <h3 class="font-semibold">Edição de Vídeo</h3>
+          <p class="text-sm text-slate-300 mt-3">Cortes, color grading, motion graphics, legendas, otimização para plataformas.</p>
+        </article>
+        <article class="p-6 glass rounded-xl">
+          <h3 class="font-semibold">Design Gráfico</h3>
+          <p class="text-sm text-slate-300 mt-3">Logotipos, identidade visual, posts e banners para redes sociais.</p>
+        </article>
+        <article class="p-6 glass rounded-xl">
+          <h3 class="font-semibold">Thumbnails & Branding</h3>
+          <p class="text-sm text-slate-300 mt-3">Thumbnails otimizadas, paleta de cores e guia de aplicação da marca.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="max-w-6xl mx-auto px-6 py-12">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-bold">Portfólio</h2>
+        <div class="flex gap-3">
+          <button class="filterBtn px-3 py-1 glass rounded-md text-sm" data-filter="all">Todos</button>
+          <button class="filterBtn px-3 py-1 glass rounded-md text-sm" data-filter="video">Vídeo</button>
+          <button class="filterBtn px-3 py-1 glass rounded-md text-sm" data-filter="graphic">Graphic</button>
+          <button class="filterBtn px-3 py-1 glass rounded-md text-sm" data-filter="branding">Branding</button>
+        </div>
+      </div>
+      <!-- Galeria do Portfólio com botões -->
+<div id="gallery" class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
+
+  <!-- Card 1 -->
+  <a href="https://www.youtube.com/watch?v=SEUVIDEO1" target="_blank"
+     class="portfolio-item rounded-xl overflow-hidden block" data-type="video">
+    <img src="https://i.pinimg.com/1200x/39/15/69/391569108901c0e022746e652250469d.jpg" 
+         alt="Edição de vídeo exemplo" class="w-full h-52 object-cover"/>
+    <div class="p-4 bg-[#071021] hover:bg-[#0e1a3a] transition">
+      Edição: Shorts/Tiktok • <span class="text-slate-400 text-sm">Vídeo</span>
+    </div>
+  </a>
+
+  <!-- Card 2 -->
+  <a href="https://www.youtube.com/watch?v=SEUVIDEO2" target="_blank"
+     class="portfolio-item rounded-xl overflow-hidden block" data-type="video">
+    <img src="https://i.pinimg.com/736x/74/5a/17/745a17f8a838ad8106d911f94858101d.jpg" 
+         alt="Edição de vídeo exemplo" class="w-full h-52 object-cover"/>
+    <div class="p-4 bg-[#071021] hover:bg-[#0e1a3a] transition">
+      Edição: Gameplay • <span class="text-slate-400 text-sm">Vídeo</span>
+    </div>
+  </a>
+
+  <!-- Card 3 -->
+  <a href="https://www.behance.net/gallery/235589633/LOGO" target="_blank"
+     class="portfolio-item rounded-xl overflow-hidden block" data-type="image">
+    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80" 
+         alt="Design gráfico exemplo" class="w-full h-52 object-cover"/>
+    <div class="p-4 bg-[#071021] hover:bg-[#0e1a3a] transition">
+      Design: Logo Minimalista • <span class="text-slate-400 text-sm">Imagem</span>
+    </div>
+  </a>
+
+  <!-- Card 4 -->
+  <a href="https://www.youtube.com/watch?v=SEUVIDEO3" target="_blank"
+     class="portfolio-item rounded-xl overflow-hidden block" data-type="video">
+    <img src="https://i.pinimg.com/736x/76/a2/4b/76a24b205c785185fb76fbbf8820bceb.jpg" 
+         alt="Edição criativa" class="w-full h-52 object-cover"/>
+    <div class="p-4 bg-[#071021] hover:bg-[#0e1a3a] transition">
+      Edição: Vlog • <span class="text-slate-400 text-sm">Vídeo</span>
+    </div>
+  </a>
+
+  <!-- Card 5 -->
+  <a href="https://www.behance.net/gallery/235551283/THUMBNAILS" target="_blank"
+     class="portfolio-item rounded-xl overflow-hidden block" data-type="image">
+    <img src="data:image/webp;base64,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" 
+         alt="Projeto gráfico" class="w-full h-52 object-cover"/>
+    <div class="p-4 bg-[#071021] hover:bg-[#0e1a3a] transition">
+      Design: Thumnails • <span class="text-slate-400 text-sm">Imagem</span>
+    </div>
+  </a>
+
+  <!-- Card 6 -->
+  <a href="https://www.youtube.com/watch?v=SEUVIDEO4" target="_blank"
+     class="portfolio-item rounded-xl overflow-hidden block" data-type="video">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" 
+         alt="Edição criativa" class="w-full h-52 object-cover"/>
+    <div class="p-4 bg-[#071021] hover:bg-[#0e1a3a] transition">
+      Edição: Aftermovie • <span class="text-slate-400 text-sm">Vídeo</span>
+    </div>
+  </a>
+
+</div>
+
+    
+      <!-- LIGHTBOX -->
+      <div id="lightbox" class="fixed inset-0 hidden items-center justify-center bg-black/70 z-50">
+        <div class="max-w-4xl w-full px-4">
+          <div class="bg-[#071021] rounded-xl overflow-hidden">
+            <button id="lbClose" class="p-3 text-slate-300">Fechar ✕</button>
+            <img id="lbImg" src="" alt="preview" class="w-full object-cover"/>
+            <div class="p-4 text-slate-300" id="lbCaption"></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="max-w-6xl mx-auto px-6 py-12">
+      <h2 class="text-2xl font-bold">Depoimentos</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <blockquote class="p-6 glass rounded-lg">"Acabei de revisar o vídeo aqui e ele ficou perfeitooo." <footer class="mt-3 text-sm text-slate-400">— Ovirgula</footer></blockquote>
+        <blockquote class="p-6 glass rounded-lg">"Ritmo e cortes perfeitos para o nosso canal." <footer class="mt-3 text-sm text-slate-400">— Cliente B</footer></blockquote>
+        <blockquote class="p-6 glass rounded-lg">"Marca renovada e aplicável em todas as redes." <footer class="mt-3 text-sm text-slate-400">— Cliente C</footer></blockquote>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-6xl mx-auto px-6 py-12">
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div>
+          <h2 class="text-2xl font-bold">Vamos trabalhar juntos?</h2>
+          <p class="mt-4 text-slate-300">Me mande as referências, o formato final desejado e o prazo — respondo com orçamento e prazo estimado.</p>
+
+          <ul class="mt-6 text-sm text-slate-400">
+            <li>📧 Email: <a href="mailto:mariaferreira1337@gmail.com" class="text-slate-200 underline">mariaferreira1337@gmail.com</a></li>
+            <li>📲 WhatsApp: <a href="https://wa.me/5531973624827" class="text-slate-200 underline">(31) 97362-4827</a></li>
+            <li>📁 Formatos: MP4, MOV, PNG, JPG, SVG, PDF</li>
+          </ul>
+
+          <div class="mt-6">
+            <a href="#" class="px-5 py-3 bg-white text-black rounded-md">Baixar CV</a>
+          </div>
+        </div>
+
+        <form class="p-6 glass rounded-xl" onsubmit="handleForm(event)">
+          <label class="block text-sm">Nome</label>
+          <input required type="text" id="name" class="w-full mt-2 p-3 bg-transparent border border-slate-700 rounded-md" />
+
+          <label class="block text-sm mt-4">Email</label>
+          <input required type="email" id="email" class="w-full mt-2 p-3 bg-transparent border border-slate-700 rounded-md" />
+
+          <label class="block text-sm mt-4">Mensagem</label>
+          <textarea required id="message" rows="4" class="w-full mt-2 p-3 bg-transparent border border-slate-700 rounded-md"></textarea>
+
+          <div class="mt-4 flex gap-3">
+            <button type="submit" class="px-4 py-2 bg-white text-black rounded-md">Enviar</button>
+            <button type="button" onclick="copyEmail()" class="px-4 py-2 border border-slate-600 rounded-md">Copiar email</button>
+          </div>
+
+          <p id="formMsg" class="mt-3 text-sm text-slate-400"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-12 py-8 border-t border-t-slate-800">
+    <div class="max-w-6xl mx-auto px-6 text-sm text-slate-400 flex flex-col md:flex-row justify-between">
+      <div>© <span id="year"></span> ADUDDesign. Todos os direitos reservados.</div>
+      <div class="mt-3 md:mt-0">Feito com ❤ — <a href="#portfolio" class="underline">Ver trabalhos</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // small interactivity: mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', ()=> mobileMenu.classList.toggle('hidden'));
+
+    // portfolio filters
+    const filterBtns = document.querySelectorAll('.filterBtn');
+    const items = document.querySelectorAll('.portfolio-item');
+    filterBtns.forEach(b=>{
+      b.addEventListener('click', ()=>{
+        const f = b.dataset.filter;
+        items.forEach(i=>{
+          if(f==='all' || i.dataset.type===f) i.style.display = '';
+          else i.style.display = 'none';
+        });
+      });
+    });
+
+    // lightbox
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCaption = document.getElementById('lbCaption');
+    const lbClose = document.getElementById('lbClose');
+
+    gallery.addEventListener('click', (e)=>{
+      const fig = e.target.closest('figure');
+      if(!fig) return;
+      const img = fig.querySelector('img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCaption.textContent = fig.querySelector('figcaption').innerText;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+    });
+    lbClose.addEventListener('click', ()=>{ lightbox.classList.add('hidden'); lightbox.classList.remove('flex'); });
+    lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) { lightbox.classList.add('hidden'); lightbox.classList.remove('flex'); }});
+
+    // form handler (simples)
+    function handleForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      // ação padrão: abrir mailto — para projetos reais, conectar a backend
+      const subject = encodeURIComponent('Orçamento — ' + name);
+      const body = encodeURIComponent(message + '\n\nContato: ' + email);
+      window.location.href = `mailto:seu.email@exemplo.com?subject=${subject}&body=${body}`;
+      document.getElementById('formMsg').textContent = 'Abrindo seu cliente de email...';
+    }
+
+    function copyEmail(){
+      navigator.clipboard.writeText('seu.email@exemplo.com')
+        .then(()=> alert('Email copiado para a área de transferência'))
+        .catch(()=> alert('Não foi possível copiar'));
+    }
+
+    // ano no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
