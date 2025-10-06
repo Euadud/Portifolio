@@ -158,11 +158,118 @@
           <div class="p-4 bg-[#071021] hover:bg-[#0e1a3a] transition">
             Design: Thumbnails • <span class="text-slate-400 text-sm">Imagem</span>
           </div>
-        </a>
+        <!-- LIGHTBOX --> <div id="lightbox" class="fixed inset-0 hidden items-center justify-center bg-black/70 z-50"> 
+           <div class="max-w-4xl w-full px-4"> <div class="bg-[#071021] rounded-xl overflow-hidden"><button id="lbClose" class="p-3 text-slate-300">Fechar ✕</button>
+           <img id="lbImg" src="" alt="preview" class="w-full object-cover"/>  <div class="p-4 text-slate-300" id="lbCaption"></div> </div> </div> </div> </section> 
+             
+               <!-- TESTIMONIALS --> <section id="testimonials" class="max-w-6xl mx-auto px-6 py-12">
+                 <h2 class="text-2xl font-bold">Depoimentos</h2> <div class="mt-6 grid md:grid-cols-3 gap-6"> <blockquote class="p-6 glass rounded-lg">"Acabei de revisar o vídeo aqui e ele ficou perfeitooo." 
+                    <footer class="mt-3 text-sm text-slate-400">— Ovirgula</footer></blockquote> <blockquote class="p-6 glass rounded-lg">"Deixou super clean a explicação. (Aula 6)" 
+                     <footer class="mt-3 text-sm text-slate-400">— Seraf </footer>
+                    </blockquote> <blockquote class="p-6 glass rounded-lg">"Marca renovada e aplicável em todas as redes." 
+                      <footer class="mt-3 text-sm text-slate-400">— Cliente C</footer></blockquote> </div> </section> 
+                      <!-- CONTACT --> <section id="contact" class="max-w-6xl mx-auto px-6 py-12"> 
+                       <div class="grid md:grid-cols-2 gap-8 items-start"> <div> 
+                         <h2 class="text-2xl font-bold">Vamos trabalhar juntos?</h2> 
+                          <p class="mt-4 text-slate-300">Me mande as referências, o formato final desejado e o prazo — respondo com orçamento e prazo estimado.</p>
+                           <ul class="mt-6 text-sm text-slate-400"> <li>📧 Email: 
+                            <a href="mailto:mariaferreira1337@gmail.com" class="text-slate-200 underline">mariaferreira1337@gmail.com</a>
+                          </li> <li>📲 WhatsApp: <a href="https://wa.me/5531973624827" class="text-slate-200 underline">(31) 97362-4827</a></li> 
+                          <li>📁 Formatos: MP4, MOV, PNG, JPG, SVG, PDF</li> </ul> <div class="mt-6"> <a href="#" class="px-5 py-3 bg-white text-black rounded-md">Baixar CV</a> </div> </div> 
+                          <form class="p-6 glass rounded-xl" onsubmit="handleForm(event)"> <label class="block text-sm">Nome</label>
+                             <input required type="text" id="name" class="w-full mt-2 p-3 bg-transparent border border-slate-700 rounded-md" /> 
+                             <label class="block text-sm mt-4">Email</label> <input required type="email" id="email" class="w-full mt-2 p-3 bg-transparent border border-slate-700 rounded-md" /> <label class="block text-sm mt-4">Mensagem</label> 
+                             <textarea required id="message" rows="4" class="w-full mt-2 p-3 bg-transparent border border-slate-700 rounded-md"></textarea> 
+                             <div class="mt-4 flex gap-3"> <button type="submit" class="px-4 py-2 bg-white text-black rounded-md">Enviar</button>
+                               <button type="button" onclick="copyEmail()" class="px-4 py-2 border border-slate-600 rounded-md">Copiar email</button> </div> 
+                               <p id="formMsg" class="mt-3 text-sm text-slate-400"></p> </form> </div> </section> </main> <!-- FOOTER --> <footer class="mt-12 py-8 border-t border-t-slate-800"> 
+                                <div class="max-w-6xl mx-auto px-6 text-sm text-slate-400 flex flex-col md:flex-row justify-between"> <div>© <span id="year"></span> ADUDDesign. Todos os direitos reservados.</div> 
+                                <div class="mt-3 md:mt-0">Feito com ❤ — <a href="#portfolio" class="underline">Ver trabalhos</a></div> </div> </footer>
+                               <script>
+// --- small interactivity: mobile menu ---
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
 
-      </div>
-    </section>
-  </main>
+menuBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('hidden');
+});
 
+// --- portfolio filters ---
+const filterBtns = document.querySelectorAll('.filterBtn');
+const items = document.querySelectorAll('.portfolio-item');
+
+filterBtns.forEach(b => {
+  b.addEventListener('click', () => {
+    const f = b.dataset.filter;
+    items.forEach(i => {
+      if (f === 'all' || i.dataset.type === f) {
+        i.style.display = '';
+      } else {
+        i.style.display = 'none';
+      }
+    });
+  });
+});
+
+// --- lightbox ---
+const gallery = document.getElementById('gallery');
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbCaption = document.getElementById('lbCaption');
+const lbClose = document.getElementById('lbClose');
+
+if (gallery) {
+  gallery.addEventListener('click', (e) => {
+    const fig = e.target.closest('figure');
+    if (!fig) return;
+
+    const img = fig.querySelector('img');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbCaption.textContent = fig.querySelector('figcaption')?.innerText || '';
+
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+  });
+}
+
+lbClose.addEventListener('click', () => {
+  lightbox.classList.add('hidden');
+  lightbox.classList.remove('flex');
+});
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+  }
+});
+
+// --- form handler (simples) ---
+function handleForm(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  const subject = encodeURIComponent('Orçamento — ' + name);
+  const body = encodeURIComponent(message + '\n\nContato: ' + email);
+
+  // Corrigido: uso de crase e aspas
+  window.location.href = `mailto:seu.email@exemplo.com?subject=${subject}&body=${body}`;
+  document.getElementById('formMsg').textContent = 'Abrindo seu cliente de email...';
+}
+
+// --- copiar email ---
+function copyEmail() {
+  navigator.clipboard.writeText('seu.email@exemplo.com')
+    .then(() => alert('Email copiado para a área de transferência'))
+    .catch(() => alert('Não foi possível copiar'));
+}
+
+// --- ano no rodapé ---
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
